@@ -1,7 +1,7 @@
-use std::process::{Command, exit};
 use regex::Regex;
-use std::str;
 use std::env;
+use std::process::{exit, Command};
+use std::str;
 
 fn main() {
     let output = Command::new("sh")
