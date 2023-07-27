@@ -22,7 +22,7 @@ fn main() {
 
     let output_str = str::from_utf8(&output.stdout).unwrap().trim_end();
 
-    let re = Regex::new(r"\s+").unwrap();
+    let re = Regex::new("\\s{2,}").unwrap();
     let fields: Vec<&str> = re.split(output_str).collect();
 
     let name = fields.get(1).expect("Expected at least 2 fields");
@@ -34,7 +34,7 @@ fn main() {
     if group == &"search" {
         let search_term = Command::new("sh")
             .arg("-c")
-            .arg(format!("echo \"\" | dmenu -p {}:", name))
+            .arg(format!("echo \"\" | dmenu -p \"{}\":", name))
             .output()
             .expect("failed to execute process")
             .stdout;
